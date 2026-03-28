@@ -10,22 +10,67 @@ import {
   TouchableOpacity
 } from "react-native";
 
+// 🔥 Firebase
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../src/services/firebase";
+
 export default function RegisterScreen({ navigation }) {
 
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
+
+    console.log("CLICK REGISTER 🚀");
 
     if (nombre === "" || correo === "" || password === "") {
       Alert.alert("Error", "Todos los campos son obligatorios");
       return;
     }
 
-    Alert.alert("Registro exitoso");
+    console.log("AUTH:", auth);
 
-    navigation.navigate("Login");
+    try {
+      //  Crear usuario en Firebase
+      console.log("ANTES DE CREAR USUARIO");
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        correo,
+        password
+      );
+
+      console.log("ANTES DE CREAR USUARIO");
+
+      // Guardar nombre del usuario
+      await updateProfile(userCredential.user, {
+        displayName: nombre
+      });
+
+      console.log("USUARIO CREADO");
+
+      console.log("Usuario creado:", userCredential.user);
+
+      Alert.alert("Éxito", "Cuenta creada correctamente");
+
+      // 🔁 Redirigir al login
+      navigation.navigate("Login");
+
+    } catch (error) {
+
+      const err = error;
+
+      if (err.code === "auth/email-already-in-use") {
+        Alert.alert("Error", "El correo ya está registrado");
+      } else if (err.code === "auth/invalid-email") {
+        Alert.alert("Error", "Correo inválido");
+      } else if (err.code === "auth/weak-password") {
+        Alert.alert("Error", "La contraseña debe tener al menos 6 caracteres");
+      } else {
+        Alert.alert("Error", err.message);
+      }
+
+    }
   };
 
   return (

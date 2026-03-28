@@ -1,19 +1,51 @@
 import { useState } from "react";
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
-export default function LoginScreen({navigation}) {
+// 🔥 Firebase
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../src/services/firebase";
+
+export default function LoginScreen({ navigation }) {
 
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
 
-    if(correo === "" || password === ""){
+    // Validación
+    if (correo === "" || password === "") {
       Alert.alert("Error", "Completa todos los campos");
       return;
     }
 
-    navigation.navigate("Home");
+    try {
+      // 🔐 Login real
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        correo,
+        password
+      );
+
+      console.log("Usuario logueado:", userCredential.user);
+
+      // ✅ Redirigir
+      navigation.navigate("Home");
+
+    } catch (error) {
+
+      const err = error;
+
+      if (err.code === "auth/user-not-found") {
+        Alert.alert("Error", "Usuario no existe");
+      } else if (err.code === "auth/wrong-password") {
+        Alert.alert("Error", "Contraseña incorrecta");
+      } else if (err.code === "auth/invalid-email") {
+        Alert.alert("Error", "Correo inválido");
+      } else {
+        Alert.alert("Error", err.message);
+      }
+
+    }
   };
 
   return (
@@ -50,8 +82,8 @@ export default function LoginScreen({navigation}) {
         <Text style={styles.register}>
           ¿No tienes cuenta?{" "}
           <Text 
-          style={styles.link}
-          onPress={() => navigation.navigate("Register")}
+            style={styles.link}
+            onPress={() => navigation.navigate("Register")}
           >
             Regístrate aquí
           </Text>
