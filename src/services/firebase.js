@@ -2,9 +2,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
-// (Opcional) analytics solo funciona en web, en React Native puede dar problemas
-// import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore"; // 🔥 FALTABA ESTO
 
 const firebaseConfig = {
   apiKey: "AIzaSyBacVPzYYERMcRdVPJuH68mgPI3HhtIOss",
@@ -13,11 +11,11 @@ const firebaseConfig = {
   storageBucket: "medicare-app-651c8.firebasestorage.app",
   messagingSenderId: "72020908661",
   appId: "1:72020908661:web:07382e7d498a054dc5b63c",
-  measurementId: "G-VJ30KPTQZM"
 };
 
-// Inicializar Firebase
+// 🔥 Inicializar
 const app = initializeApp(firebaseConfig);
 
-// 🔥 ESTA ES LA CLAVE
+// 🔥 EXPORTAR TODO
 export const auth = getAuth(app);
+export const db = getFirestore(app); // 🔥 ESTA ES LA CLAVE
