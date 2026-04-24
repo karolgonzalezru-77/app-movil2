@@ -18,4 +18,4 @@ const app = initializeApp(firebaseConfig);
 
 // 🔥 EXPORTAR TODO
 export const auth = getAuth(app);
-export const db = getFirestore(app); // 🔥 ESTA ES LA CLAVE
+export const db = getFirestore(app, "medicare-db");
