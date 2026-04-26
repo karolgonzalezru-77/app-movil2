@@ -1,50 +1,62 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)&nbsp;
+![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)&nbsp;
+![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)&nbsp;
+![Firestore](https://img.shields.io/badge/Firestore-ffca28?style=for-the-badge&logo=firebase&logoColor=black)&nbsp;
+![React Navigation](https://img.shields.io/badge/React_Navigation-6C47FF?style=for-the-badge&logo=react&logoColor=white)&nbsp;
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)&nbsp;
 
-## Get started
+MediCare+
 
-1. Install dependencies
+Planteamiento del problema:
+Muchas personas, especialmente adultos mayores y pacientes crónicos, olvidan tomar sus
+medicamentos a tiempo, lo que afecta negativamente su salud y calidad de vida. Esta situación
+también representa un reto para instituciones como EPS y ancianatos, que carecen de
+herramientas tecnológicas para hacer seguimiento al cumplimiento de los tratamientos.
+Aunque existen algunas aplicaciones de recordatorio, muchas no están adaptadas a las
+necesidades locales ni a usuarios con poca experiencia tecnológica. Por ello, se hace necesario
+desarrollar una aplicación accesible, intuitiva y enfocada en mejorar la adherencia a los
+tratamientos médicos tanto a nivel personal como institucional.
 
-   ```bash
-   npm install
-   ```
+## 🚀 Características y Stack Tecnológico
 
-2. Start the app
+**MediCare+** es una aplicación móvil enfocada en la adherencia a tratamientos médicos, complementada con un panel web para monitoreo y gestión.
 
-   ```bash
-   npx expo start
-   ```
+### 🧠 Funcionalidades Clave
 
-In the output, you'll find options to open the app in a
+* **Panel de Adherencia:** seguimiento de dosis (completadas, pendientes y próximas).
+* **Gestión de Medicamentos:** registro con nombre, hora y frecuencia.
+* **Acciones Rápidas:** confirmar, posponer u omitir dosis fácilmente.
+* **Notificaciones Inteligentes:** recordatorios automáticos y alertas de retraso.
+* **Estadísticas:** porcentaje de cumplimiento del tratamiento.
+* **Interfaz Moderna:** diseño accesible tipo glassmorphism, claro y responsivo.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 🛠️ Stack Tecnológico
 
-## Get a fresh project
+**Aplicación móvil:**
 
-When you're ready, run:
+* React Native (Expo)
+* Firebase Authentication
+* Firebase Firestore
+* Expo Notifications
 
-```bash
-npm run reset-project
-```
+**Panel web (complementario):**
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+* Vue 3 (Composition API) + TypeScript
+* Tailwind CSS + Vite
+* Pinia (estado global)
+* Axios (HTTP)
+* Chart.js / vue-chartjs (gráficas)
+* xlsx (exportación de datos)
 
-## Learn more
+**Backend (evolutivo):**
 
-To learn more about developing your project with Expo, look at the following resources:
+* Node.js + Express
+* PostgreSQL
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+**Despliegue:**
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+* Frontend web: Vercel
+* Backend: Render / Railway
